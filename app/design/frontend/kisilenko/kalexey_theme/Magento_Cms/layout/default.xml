@@ -1,0 +1,9 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="columns">
+            <container name="columns.promo.block" htmlTag="div" htmlClass="promo-block" after="div.promo.block">
+                <block class="Magento\Framework\View\Element\Template" name="promo.template" as="promo.template" template="Magento_Theme::my_templates/promoblock.phtml"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

@@ -7,5 +7,10 @@
                 <argument name="logo_img_height" xsi:type="number">210</argument>
             </arguments>
         </referenceBlock>
+        <referenceContainer name="columns">
+            <container name="columns.promo.block" htmlTag="div" htmlClass="promo-block" after="div.sidebar.additional">
+                <block class="Magento\Framework\View\Element\Template" name="promo.template" as="promo.template" template="Magento_Theme::my_templates/promoblock.phtml"/>
+            </container>
+        </referenceContainer>
     </body>
 </page>
