@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+<router id="home-work">
+        <route id="akisilenko_kmodule" frontName="akisilenko-kmodule">
+            <module name="AKisilenko_Kmodule"/>
+        </route>
+    </router>
+</config>
