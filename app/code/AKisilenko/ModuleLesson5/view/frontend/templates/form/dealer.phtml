@@ -1,11 +1,6 @@
 <?php
 /** @var \Magento\Customer\Block\Form\Register $block */
 ?>
-<div data-mage-init='{"registerPopup": {"message": "Registration for dealer"}}' class="test"></div>
-
-<a href="#" id="click-header">
-    View Video
-</a>
 <div id="header-mpdal" style="display:none;">
     <div class="new-customer-form">
         <?= $block->getChildHtml('form_fields_before') ?>
@@ -233,35 +228,20 @@
 </script>
     </div>
 </div>
-<script>
-    require(
-        [
-            'jquery',
-            'Magento_Ui/js/modal/modal'
-        ],
-        function(
-            $,
-            modal
-        ) {
-            var options = {
-                type: 'popup',
-                responsive: true,
-                innerScroll: true,
-                title: '',
-                buttons: [{
-                    text: $.mage.__('Close'),
-                    class: '',
-                    click: function () {
-                        this.closeModal();
-                    }
-                }]
-            };
 
-            var popup = modal(options, $('#header-mpdal'));
-            $("#click-header").on('click',function(){
-                $("#header-mpdal").modal("openModal");
-            });
 
-        }
-    );
-</script>
+<div class="dealer-button-block">
+    <a data-mage-init='{"registerPopup": {"type": "popup"}}' id="dealer-popup">
+        <?= $block->escapeHtml(__('Registration for dealer')) ?>
+    </a>
+</div>
+
+
+<!--<script type="text/x-magento-init">-->
+<!--    {-->
+<!--        "#dealer-popup": {-->
+<!--            "registerPopup": {-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
