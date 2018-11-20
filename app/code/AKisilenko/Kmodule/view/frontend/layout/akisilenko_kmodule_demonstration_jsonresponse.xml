@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <container name="lesson3.custom.layout"
+                       htmlTag="div"
+                       htmlClass="akisilenko-content">
+                <block class="AKisilenko\Kmodule\Block\CustomBlock"
+                       name="lesson3.custom.block"
+                       template="AKisilenko_Kmodule::myhomework/testhomework.phtml"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

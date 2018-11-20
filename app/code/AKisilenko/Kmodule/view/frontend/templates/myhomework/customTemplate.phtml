@@ -1,0 +1,19 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+<h1>
+    <span>I'ts working now</span>
+</h1>
+    <?php if ($block->getName()):?>
+        <h3>
+            <?= /* @escapeNotVerified */ $block->getName(); ?>
+        </h3>
+<?php endif;?>
+    <?php if ($block->getLastName()):?>
+        <h3>
+            <?= /* @escapeNotVerified */ $block->getLastName(); ?>
+        </h3>
+    <?php endif;?>
+
+    <a href="<?=  $block->getDefaultMyRouterLink(); ?>" target="_blank">Default Router Is</a>
+</div>
