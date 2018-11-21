@@ -1,0 +1,67 @@
+<?php
+/**
+ * @var $block \Magento\Catalog\Block\Product\View
+ */
+?>
+<div class="product-question-form">
+    <form action="#" id="ask_question_form" method="post" data-mage-init='{"askQuestion":{}, "validation":{}}' onsubmit="return false">
+        <fieldset class="fieldset">
+            <legend class="legend">
+                <span><?= $block->escapeHtml(__('Ask Question')) ?></span>
+            </legend>
+            <br/>
+            <div class="field name">
+                <div class="control">
+                    <input name="name"
+                           id="name"
+                           placeholder="<?= $block->escapeHtmlAttr(__('Name')) ?>"
+                           class="input-text"
+                           type="text"
+                           data-validate="{required:true}"
+                    />
+                </div>
+            </div>
+            <div class="field email">
+                <div class="control">
+                    <input name="email"
+                           id="email"
+                           placeholder="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                           class="input-text"
+                           type="text"
+                           data-validate="{required:true, 'validate-email':true}"
+                    />
+                </div>
+            </div>
+            <div class="field telephone">
+                <div class="control">
+                    <input name="telephone"
+                           id="telephone"
+                           placeholder="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
+                           class="input-text"
+                           type="text"
+                           data-validate="{required:true, 'ukr-phone-rule':true}"
+                    />
+                </div>
+            </div>
+            <div class="field comment required">
+                <div class="control">
+                        <textarea name="comment"
+                                  id="comment"
+                                  placeholder="<?= $block->escapeHtmlAttr(__('Question?')) ?>"
+                                  class="input-text"
+                                  cols="5" rows="3"
+                                  data-validate="{required:true}"
+                        ></textarea>
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value=""/>
+                <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
+                    <span><?= $block->escapeHtml(__('Submit')) ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
