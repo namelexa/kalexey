@@ -16,9 +16,10 @@ define([
             }]
         };
 
-        var popup = modal(options, $('#header-mpdal'));
+        var popup = modal(options, $('#header-modal'));
         $("#dealer-popup").on('click',function(){
-            $("#header-mpdal").modal("openModal");
+            $("#header-modal").modal("openModal");
+            $("#header-modal").trigger('contentUpdated');
         });
 
     }
