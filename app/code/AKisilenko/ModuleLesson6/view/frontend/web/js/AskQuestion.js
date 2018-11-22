@@ -1,12 +1,14 @@
 define([
     'jquery',
-    'jquery/ui'
+    'jquery/ui',
+    'Magento_Ui/js/modal/alert',
+    'mage/cookies'
 ], function ($) {
     'use strict';
 
     $.widget('moduleLesson6.AskQuestion', {
         options: {
-            action: ''
+            action:''
         },
 
         /** @implements*/
@@ -22,7 +24,27 @@ define([
             if (!this.validateForm()) {
                 return;
             }
-            console.log('Submit');
+
+            var formData = new FormData($(this.element).get(0));
+
+            formData.append('form_key', $.mage.cookies.get('form_key'));
+
+            $.ajax({
+                url: $(this.element).attr('action'),
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'post',
+                dataType: 'json',
+                context: this,
+            })
+                .done(function (response) {
+                    console.log('okay');
+                })
+                .fail(function (error) {
+                    console.log(JSON.stringify(error));
+                    console.log('error');
+                });
         },
 
         /**
@@ -31,6 +53,14 @@ define([
          */
         validateForm: function () {
             return $(this.element).validate().valid();
+        },
+
+
+        /**
+         * Clear that `ask_question_timestamp` cookie
+         */
+        clearCookie: function () {
+            $.mage.cookies.clear(this.options.cookieName);
         }
     });
 

@@ -4,7 +4,7 @@
         <referenceBlock name="product.info.details">
             <block class="Magento\Catalog\Block\Product\View"
                    name="tab.ask.question"
-                   as="tab.question"
+                   as="ask.question"
                    template="AKisilenko_ModuleLesson6::product/view/ask_question.phtml"
                    group="detailed_info">
                 <arguments>
