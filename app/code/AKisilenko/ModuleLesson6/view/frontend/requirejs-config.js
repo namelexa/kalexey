@@ -1,12 +1,12 @@
 var config = {
     paths: {
-            'askQuestion': 'AKisilenko_ModuleLesson6/js/AskQuestion'
-        },
+        'askQuestion': 'AKisilenko_ModuleLesson6/js/AskQuestion'
+    },
 
     map: {
         '*': {
-                'validation': 'mage/validation/validation'
-            }
+            'validation': 'mage/validation/validation'
+        }
     },
     config: {
         mixins: {

@@ -4,7 +4,7 @@
  */
 ?>
 <div class="product-question-form">
-    <form action="<?= $block->getUrl('ask_question/submit') ?>" id="ask_question_form" method="post" data-mage-init='{"askQuestion":{}, "validation":{}}'>
+    <form action="<?= $block->getUrl('ask_question/submit') ?>" id="ask_question_form" method="post" data-mage-init='{"askQuestion":{}, "validation":{}}' onsubmit="return false">
         <fieldset class="fieldset">
             <legend class="legend">
                 <span><?= $block->escapeHtml(__('Ask Question')) ?></span>

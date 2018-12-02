@@ -1,14 +1,14 @@
 define([
     'jquery',
-    'jquery/ui',
     'Magento_Ui/js/modal/alert',
-    'mage/cookies'
-], function ($) {
+    'mage/cookies',
+    'jquery/ui'
+], function ($, alert) {
     'use strict';
 
     $.widget('moduleLesson6.AskQuestion', {
         options: {
-            action:''
+            cookieName:'time_cookie'
         },
 
         /** @implements*/
@@ -25,10 +25,14 @@ define([
                 return;
             }
 
+
             var formData = new FormData($(this.element).get(0));
 
             formData.append('form_key', $.mage.cookies.get('form_key'));
-
+            formData.append('time_cookie', $.mage.cookies.get(this.options.cookieName));
+            formData.append('isAjax', 1);
+            // debugger;
+            var self=this;
             $.ajax({
                 url: $(this.element).attr('action'),
                 data: formData,
@@ -38,12 +42,23 @@ define([
                 dataType: 'json',
                 context: this,
             })
+            // debugger;
                 .done(function (response) {
-                    console.log('okay');
+                    alert({
+                        title: $.mage.__(response.status),
+                        content: $.mage.__(response.message)
+                    });
+                    // debugger;
+                    if (response.status === 'Success') {
+                        var date = new Date(new Date().getTime() + 120 * 1000);
+                        $.mage.cookies.set(self.options.cookieName, self.options.cookieName, {expires: date});
+                    }
                 })
-                .fail(function (error) {
-                    console.log(JSON.stringify(error));
-                    console.log('error');
+                .fail(function () {
+                        alert({
+                            title: 'Error',
+                            content: 'Your request can not be submitted. Please, contact us directly via email or prone to get your Sample.'
+                        });
                 });
         },
 
@@ -55,13 +70,12 @@ define([
             return $(this.element).validate().valid();
         },
 
-
         /**
-         * Clear that `ask_question_timestamp` cookie
+         * Clear cookie
          */
         clearCookie: function () {
             $.mage.cookies.clear(this.options.cookieName);
-        }
+        },
     });
 
     return $.moduleLesson6.AskQuestion;
