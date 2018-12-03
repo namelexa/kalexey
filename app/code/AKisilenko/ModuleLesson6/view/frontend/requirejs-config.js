@@ -1,6 +1,6 @@
 var config = {
     paths: {
-        'askQuestion': 'AKisilenko_ModuleLesson6/js/AskQuestion'
+        'askQuestion': 'AKisilenko_ModuleLesson6/js/ask-question'
     },
 
     map: {
@@ -11,7 +11,7 @@ var config = {
     config: {
         mixins: {
             'mage/validation': {
-                'AKisilenko_ModuleLesson6/js/validationPhone-mixin': true
+                'AKisilenko_ModuleLesson6/js/validation-phone-mixin': true
             }
         }
     }
