@@ -24,6 +24,14 @@ define([
             if (!this.validateForm()) {
                 return;
             }
+            if ($.mage.cookies.get(this.options.cookieName)) {
+                alert({
+                    title: $.mage.__('Error'),
+                    content: $.mage.__('A message may be sent no more than once every 2 minutes.')
+                });
+
+                return;
+            }
 
 
             var formData = new FormData($(this.element).get(0));
@@ -50,8 +58,8 @@ define([
                     });
                     // debugger;
                     if (response.status === 'Success') {
-                        var date = new Date(new Date().getTime() + 120 * 1000);
-                        $.mage.cookies.set(self.options.cookieName, self.options.cookieName, {expires: date});
+                        var date = '10';
+                        $.mage.cookies.set(self.options.cookieName, self.options.cookieName, {lifetime: date});
                     }
                 })
                 .fail(function () {
@@ -67,7 +75,7 @@ define([
          * @returns {bool}
          */
         validateForm: function () {
-            return $(this.element).validate().valid();
+            return $(this.element).validation().valid();
         },
 
         /**

@@ -35,10 +35,10 @@ class Index extends \Magento\Framework\App\Action\Action
             if (!$request->isAjax()) {
                 throw new LocalizedException(__('This request is not valid and can not be processed.'));
             }
-            if ($request->getParam('time_cookie') === 'time_cookie') {
+            if (!$request->getParam('time_cookie')) {
                 $data = [
                     'status' => self::STATUS_ERROR,
-                    'message' => 'Your request cannot be submitted.'
+                    'message' => 'A message may be sent no more than once every 2 minutes.'
                 ];
             } else {
                 $data = [
