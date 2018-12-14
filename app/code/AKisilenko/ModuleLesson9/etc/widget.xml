@@ -7,7 +7,7 @@
         <parameters>
             <parameter name="button_title" xsi:type="text"
                        visible="true"
-                       sort_order="20">
+                       sort_order="10">
                 <label translate="true">
                     Button title
                 </label>
@@ -25,6 +25,11 @@
                     </data>
                 </block>
             </parameter>
+            <parameter name="banner_content" xsi:type="text"
+                       sort_order="20"
+                       visible="true">
+                <label translate="true">Widget Content</label>
+            </parameter>
             <parameter name="button_color" xsi:type="select"
                        visible="true" sort_order="30" >
                 <label translate="true">Button Color</label>
@@ -40,5 +45,17 @@
                 </options>
             </parameter>
         </parameters>
+        <containers>
+            <container name="content">
+                <template name="grid" value="default" />
+            </container>
+            <container name="home.page">
+                <template name="grid-page" value="grid-page" />
+            </container>
+            <container name="main">
+                <template name="grid-main" value="grid-main" />
+            </container>
+
+        </containers>
     </widget>
 </widgets>

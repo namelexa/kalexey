@@ -1,6 +1,4 @@
-<?php
-/* @var $block \AKisilenko\ModuleLesson9\Block\Widget\Programmatically */
-?>
+
 
 <style>
     .button-homepage {
@@ -10,14 +8,25 @@
     }
 </style>
 
-<?php if ($block->getWidgetTitle()): ?>
-    <h2 class='custom-widget-title'>
-        <?php echo $block->getWidgetTitle(); ?>
-    </h2>
-<?php endif; ?>
+    <?php if ($block->getButtonTitle()): ?>
+        <h2 class='custom-widget-title'>
+            <?php echo $block->getButtonTitle(); ?>
+        </h2>
+    <?php endif; ?>
 
-<?php if ($block->getData('button_title')): ?>
-    <button class="button-homepage" onclick="location.href='geekhub-cms'">
-        <?php echo $block->getData('button_title') ?>;
-    </button>
-<?php endif; ?>
+    <?php if ($block->getBannerContent()) : ?>
+        <p class='custom-widget-content'>
+            <?= $block->getBannerContent(); ?>
+        </p>
+    <?php endif; ?>
+<div class="home-banner">
+        <?php echo $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId($block->getData('select_block'))
+            ->toHtml(); ?>
+    <?php if ($block->getData('button_title')): ?>
+        <button class="button-homepage" onclick="location.href='geekhub-cms'">
+            <?php echo $block->getData('button_title') ?>
+        </button>
+    <?php endif; ?>
+</div>
