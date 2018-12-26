@@ -6,6 +6,7 @@ return [
         'AKisilenko_ModuleLesson5' => 1,
         'AKisilenko_ModuleLesson6' => 1,
         'AKisilenko_ModuleLesson9' => 1,
+        'AKisilenko_UIModuleLesson9' => 1,
         'Magento_Store' => 1,
         'Magento_Directory' => 1,
         'Magento_Eav' => 1,
