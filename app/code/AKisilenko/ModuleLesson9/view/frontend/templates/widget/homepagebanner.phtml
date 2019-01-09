@@ -1,13 +1,3 @@
-
-
-<style>
-    .button-homepage {
-        background: <?php echo $block->getData('button_color') ?>;
-        padding: 30px;
-        border-radius: 5px;
-    }
-</style>
-
     <?php if ($block->getButtonTitle()): ?>
         <h2 class='custom-widget-title'>
             <?php echo $block->getButtonTitle(); ?>
@@ -20,13 +10,11 @@
         </p>
     <?php endif; ?>
 <div class="home-banner">
-        <?php echo $block->getLayout()
-            ->createBlock('Magento\Cms\Block\Block')
-            ->setBlockId($block->getData('select_block'))
-            ->toHtml(); ?>
+        <?php echo $block->getHomeBanner(); ?>
     <?php if ($block->getData('button_title')): ?>
-        <button class="button-homepage" onclick="location.href='geekhub-cms'">
+        <a href="geekhub-cms" class="button-homepage"
+           style="background: <?php echo $block->getData('button_color') ?>;">
             <?php echo $block->getData('button_title') ?>
-        </button>
+        </a>
     <?php endif; ?>
 </div>
