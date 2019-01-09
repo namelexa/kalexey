@@ -1,4 +1,4 @@
-    <?php if ($block->getButtonTitle()): ?>
+    <?php if ($block->getButtonTitle()) : ?>
         <h2 class='custom-widget-title'>
             <?php echo $block->getButtonTitle(); ?>
         </h2>
@@ -9,12 +9,15 @@
             <?= $block->getBannerContent(); ?>
         </p>
     <?php endif; ?>
-<div class="home-banner">
-        <?php echo $block->getHomeBanner(); ?>
-    <?php if ($block->getData('button_title')): ?>
-        <a href="geekhub-cms" class="button-homepage"
-           style="background: <?php echo $block->getData('button_color') ?>;">
-            <?php echo $block->getData('button_title') ?>
-        </a>
+
+    <?php if ($block->getBannerContent()) : ?>
+        <div class="home-banner">
+                <?php echo $block->getHomeBanner(); ?>
+            <?php if ($block->getData('button_title')) : ?>
+                <a href="<?php echo $block->getUrl('geekhub-cms')?>" class="button-homepage"
+                   style="background: <?php echo $block->getData('button_color') ?>;">
+                    <?php echo $block->getData('button_title') ?>
+                </a>
+            <?php endif; ?>
+        </div>
     <?php endif; ?>
-</div>
