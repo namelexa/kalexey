@@ -2,6 +2,7 @@
 return [
     'modules' => [
         'AKisilenko_Kmodule' => 1,
+        'AKisilenko_ModuleLesson11' => 1,
         'AKisilenko_ModuleLesson4' => 1,
         'AKisilenko_ModuleLesson5' => 1,
         'AKisilenko_ModuleLesson6' => 1,

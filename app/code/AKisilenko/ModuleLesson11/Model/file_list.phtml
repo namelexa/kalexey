@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+namespace file_list;
+
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+
+/**
+ * Class MyFiles
+ * @package file_list
+ */
+
+class MyFiles
+{
+    public function makeFileList()
+    {
+        $path = realpath('/misc/apps/kalexey/app/code/');
+
+        $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
+        foreach($objects as $name => $object){
+            echo "$name\n";
+        }
+    }
+}
+
+//$newFiles = new MyFiles();
+//$newFiles->makeFileList();
