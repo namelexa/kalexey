@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AKisilenko\ModuleLesson11\Model\ReflectionExample;
+namespace AKisilenko\ModuleLesson11\Model;
 
 use ReflectionClass;
 use ReflectionMethod;
@@ -28,7 +28,7 @@ class ReflectionExample
      */
     public function getMethods():array
     {
-        $item = new  ReflectionClass(__CLASS__);
+        $item = new  \ReflectionClass(__CLASS__);
         return $item->getMethods();
     }
 

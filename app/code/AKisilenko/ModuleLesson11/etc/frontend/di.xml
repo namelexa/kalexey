@@ -10,15 +10,15 @@
             <!-- Pass 1 -->
             <argument name="intParam" xsi:type="number">1</argument>
             <!-- Pass application init argument, named by constant value -->
-            <!--<argument name="globalInitParam" xsi:type="const">AKisilenko\ModuleLesson11\Model\ReflectionExample::PARENT1</argument>-->
+            <argument name="globalInitParam" xsi:type="const">AKisilenko\ModuleLesson11\Model\ReflectionExample::PARENT1</argument>
             <!-- Pass constant value -->
-            <!--<argument name="constantParam" xsi:type="const">AKisilenko\ModuleLesson11\Model\ReflectionExample::PARENT2</argument>-->
+            <argument name="constantParam" xsi:type="const">AKisilenko\ModuleLesson11\Model\ReflectionExample::PARENT2</argument>
             <!-- Pass null value -->
             <argument name="optionalParam" xsi:type="null"/>
             <!-- Pass array -->
             <argument name="arrayParam" xsi:type="array">
                 <!-- First element is value of constant -->
-                <!--<item name="firstElem" xsi:type="const">AKisilenko\ModuleLesson11\Model\ReflectionExample::PARENT1</item>-->
+                <item name="firstElem" xsi:type="const">AKisilenko\ModuleLesson11\Model\ReflectionExample::PARENT1</item>
                 <!-- Second element is null -->
                 <item name="secondElem" xsi:type="null"/>
                 <!-- Third element is a subarray -->

@@ -4,7 +4,8 @@
         <referenceContainer name="content">
             <block class="AKisilenko\ModuleLesson11\Block\View"
                    name="result222"
-                   template="AKisilenko_ModuleLesson11::result_view.phtml"/>
+                   template="AKisilenko_ModuleLesson11::result_view.phtml">
+            </block>
         </referenceContainer>
     </body>
 </page>

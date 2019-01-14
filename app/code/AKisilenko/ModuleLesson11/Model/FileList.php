@@ -17,9 +17,10 @@ class FileList
     {
         $path = realpath('/misc/apps/kalexey/app/code/');
         $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
-        foreach($objects as $name => $object){
-            echo "$name" . ' ' . date('F d Y H:i:s.', filemtime($name)) . "\n";
-        }
+        return $objects;
+//        foreach($objects as $name => $object){
+//            return "$name" . ' ' . date('F d Y H:i:s.', filemtime($name)) . "\n";
+//        }
     }
 }
 //$newFiles = new FileList();
