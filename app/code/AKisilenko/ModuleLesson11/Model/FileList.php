@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AKisilenko\ModuleLesson11\Model\FileList;
+namespace AKisilenko\ModuleLesson11\Model;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -11,7 +11,7 @@ use RecursiveIteratorIterator;
  * Class MyFiles
  * @package file_list
  */
-class MyFiles
+class FileList
 {
     public function makeFileList()
     {
@@ -22,5 +22,5 @@ class MyFiles
         }
     }
 }
-//$newFiles = new MyFiles();
+//$newFiles = new FileList();
 //$newFiles->makeFileList();
