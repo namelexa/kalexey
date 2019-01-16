@@ -1,7 +1,9 @@
 <?php
 namespace AKisilenko\ModuleLesson6\Controller\Submit;
+
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
+
 class Index extends \Magento\Framework\App\Action\Action
 {
     const STATUS_ERROR = 'Error';
