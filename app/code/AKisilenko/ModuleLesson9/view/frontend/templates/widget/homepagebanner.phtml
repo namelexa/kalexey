@@ -1,0 +1,23 @@
+    <?php if ($block->getButtonTitle()) : ?>
+        <h2 class='custom-widget-title'>
+            <?php echo $block->getButtonTitle(); ?>
+        </h2>
+    <?php endif; ?>
+
+    <?php if ($block->getBannerContent()) : ?>
+        <p class='custom-widget-content'>
+            <?= $block->getBannerContent(); ?>
+        </p>
+    <?php endif; ?>
+
+    <?php if ($block->getBannerContent()) : ?>
+        <div class="home-banner">
+                <?php echo $block->getHomeBanner(); ?>
+            <?php if ($block->getButtonTitle()) : ?>
+                <a href="<?= $block->getUrl('geekhub-cms')?>" class="button-homepage"
+                   style="background: <?php echo $block->getData('button_color') ?>;">
+                    <?php echo $block->getButtonTitle() ?>
+                </a>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>

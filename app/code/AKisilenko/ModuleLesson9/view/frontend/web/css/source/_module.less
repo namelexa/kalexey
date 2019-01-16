@@ -1,0 +1,54 @@
+//    Common
+//--------------------------------------
+
+//@screen__xxs: 320px;
+//@screen__xs: 480px;
+//@screen__s: 640px;
+//@screen__m: 768px;
+//@screen__l: 1024px;
+//@screen__xl: 1440px;
+
+////------------------------------------
+
+& when (@media-common = true) {
+    .home-banner{
+        position: relative;
+        max-width: 700px;
+        min-height: 300px;
+    }
+    .home-banner a.button-homepage{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .button-homepage {
+        padding: 30px;
+        border-radius: 5px;
+    }
+}
+
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xs){
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl){
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s){
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs){
+
+}

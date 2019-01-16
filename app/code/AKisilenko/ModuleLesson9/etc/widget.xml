@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="programmatically" class="AKisilenko\ModuleLesson9\Block\Widget\Programmatically">
+        <label>Homework widget</label>
+        <description>Go-go-go!</description>
+        <parameters>
+            <parameter name="button_title" xsi:type="text"
+                       visible="true"
+                       sort_order="10">
+                <label translate="true">
+                    Button title
+                </label>
+            </parameter>
+            <parameter name="select_block" xsi:type="block"
+                       visible="true"
+                       required="true"
+                       sort_order="10">
+                <label translate="true">Select block</label>
+                <block class="Magento\Cms\Block\Adminhtml\Block\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Block...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="banner_content" xsi:type="text"
+                       sort_order="20"
+                       visible="true">
+                <label translate="true">Widget Content</label>
+            </parameter>
+            <parameter name="button_color" xsi:type="select"
+                       visible="true" sort_order="30" >
+                <label translate="true">Button Color</label>
+                <options>
+                    <option name="red" value="red">
+                        <label>Red</label>
+                    </option>
+                    <option name="green" value="green" selected="true">
+                        <label translate="true">Green</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="grid" value="default" />
+            </container>
+            <container name="home.page">
+                <template name="grid-page" value="grid-page" />
+            </container>
+            <container name="main">
+                <template name="grid-main" value="grid-main" />
+            </container>
+        </containers>
+    </widget>
+</widgets>
