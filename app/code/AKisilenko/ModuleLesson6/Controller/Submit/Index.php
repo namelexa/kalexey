@@ -1,6 +1,7 @@
 <?php
 namespace AKisilenko\ModuleLesson6\Controller\Submit;
 
+use AKisilenko\ModuleLesson6\Model\AskQuestion;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
 
@@ -13,19 +14,28 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     private $formKeyValidator;
     /**
+     * @var \AKisilenko\ModuleLesson6\Model\AskQuestionFactory
+     */
+    private $askQuestionFactory;
+
+    /**
      * Index constructor.
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
+     * @param \AKisilenko\ModuleLesson6\Model\AskQuestionFactory $askQuestionFactory
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
         \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
+        \AKisilenko\ModuleLesson6\Model\AskQuestionFactory $askQuestionFactory,
         \Magento\Framework\App\Action\Context $context
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
+        $this->askQuestionFactory = $askQuestionFactory;
     }
+
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
@@ -37,6 +47,12 @@ class Index extends \Magento\Framework\App\Action\Action
             if (!$request->isAjax()) {
                 throw new LocalizedException(__('This request is not valid and can not be processed.'));
             }
+            $askQuestion = $this->askQuestionFactory->create();
+            $askQuestion->setName($request->getParam('name'))
+                ->setEmail($request->getParam('email'))
+                ->setTelephone($request->getParam('telephone'))
+                ->setComment($request->getParam('comment'));
+            $askQuestion->save();
             if (!$request->getParam('time_cookie')) {
                 $data = [
                     'status' => self::STATUS_ERROR,
