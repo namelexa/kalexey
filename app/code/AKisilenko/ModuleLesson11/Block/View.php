@@ -5,27 +5,29 @@ namespace AKisilenko\ModuleLesson11\Block;
 use AKisilenko\ModuleLesson11\Model\ConstructExample;
 use AKisilenko\ModuleLesson11\Model\FileList;
 use AKisilenko\ModuleLesson11\Model\ReflectionExample;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Class View
  * @package AKisilenko\ModuleLesson11\Block
  */
-class View extends \Magento\Framework\View\Element\Template
+class View extends Template
 {
-    public $constructExampleModel;
-    public $fileListModel;
-    public $reflectionExampleModel;
+    private $constructExampleModel;
+    private $fileListModel;
+    private $reflectionExampleModel;
 
     /**
      * View constructor.
-     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param Context $context
      * @param ConstructExample $constructExample
      * @param FileList $fileList
      * @param ReflectionExample $reflectionExample
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
+        Context $context,
         ConstructExample $constructExample,
         FileList $fileList,
         ReflectionExample $reflectionExample,
