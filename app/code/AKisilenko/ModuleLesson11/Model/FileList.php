@@ -24,7 +24,6 @@ class FileList extends DirectoryList
         DirectoryList $directoryList
     )
     {
-        parent::__construct($directoryList);
         $this->directoryList = $directoryList;
     }
 
