@@ -43,19 +43,23 @@
         <filters name="listing_filters"/>
         <exportButton name="export_button"/>
         <massaction name="listing_massaction">
-            <action name="delete">
-                <settings>
-                    <confirm>
-                        <message translate="true">Are you sure you want to delete selected items?</message>
-                        <title translate="true">Delete items</title>
-                    </confirm>
-                    <url path="ask_question/ask/massDelete"/>
-                    <type>delete</type>
-                    <label translate="true">Delete</label>
-                </settings>
+            <action name="change_status">
+                <argument name="data" xsi:type="array">
+                              <item name="config" xsi:type="array">
+                                  <item name="type" xsi:type="string">change_status</item>
+                                  <item name="label" xsi:type="string" translate="true">Change status</item>
+                              </item>
+                          </argument>
+                <argument name="actions" xsi:type="configurableObject">
+                              <argument name="class" xsi:type="string">AKisilenko\ModuleLesson6\Ui\Component\MassAction\Status\Options</argument>
+                              <argument name="data" xsi:type="array">
+                                  <item name="urlPath" xsi:type="string">rewardpoints/earningrates/massStatus</item>
+                                  <item name="paramName" xsi:type="string">status</item>
+                              </argument>
+                          </argument>
             </action>
         </massaction>
-        <paging name="listing_paging"/>
+         <paging name="listing_paging"/>
     </listingToolbar>
     <columns name="ask_question_columns">
         <settings>

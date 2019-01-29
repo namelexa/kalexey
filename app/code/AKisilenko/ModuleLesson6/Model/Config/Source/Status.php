@@ -3,7 +3,6 @@ namespace AKisilenko\ModuleLesson6\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 use AKisilenko\ModuleLesson6\Model\AskQuestion;
-use Magento\Cron\Model\Schedule;
 
 class Status implements OptionSourceInterface
 {

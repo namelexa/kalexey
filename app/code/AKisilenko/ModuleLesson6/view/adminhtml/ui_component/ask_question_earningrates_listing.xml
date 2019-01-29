@@ -1,0 +1,31 @@
+<massaction name="listing_massaction" xmlns:xsi="http://symfony.com/schema/dic/services">
+      <action name="change_status">
+          <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                  <item name="type" xsi:type="string">change_status</item>
+                  <item name="label" xsi:type="string" translate="true">Change status</item>
+              </item>
+          </argument>
+          <argument name="actions" xsi:type="configurableObject">
+              <argument name="class" xsi:type="string">AKisilenko\ModuleLesson6\Ui\Component\MassAction\Status\Options</argument>
+              <argument name="data" xsi:type="array">
+                  <item name="urlPath" xsi:type="string">rewardpoints/earningrates/massStatus</item>
+                  <item name="paramName" xsi:type="string">status</item>
+              </argument>
+          </argument>
+      </action>
+</massaction>
+<columns>
+<column name="status">
+       <argument name="data" xsi:type="array" xmlns:xsi="http://symfony.com/schema/dic/services">
+          <item name="options" xsi:type="object">AKisilenko\ModuleLesson6\Ui\Component\Listing\Column\Status</item>
+          <item name="config" xsi:type="array">
+              <item name="editor" xsi:type="string">select</item>
+              <item name="filter" xsi:type="string">select</item>
+              <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+              <item name="dataType" xsi:type="string">select</item>
+              <item name="label" xsi:type="string" translate="true">Status</item>
+          </item>
+       </argument>
+     </column>
+</columns>
