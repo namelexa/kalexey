@@ -9,10 +9,9 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
 class Requests extends Template
-
 {
     /**
-     * @var CollectionFactory
+     * @var AKisilenko\ModuleLesson6\Model\ResourceModel\AskQuestion\CollectionFactory
      */
     private $collectionFactory;
 

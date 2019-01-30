@@ -3,6 +3,13 @@
 namespace AKisilenko\ModuleLesson6\Model;
 
 use AKisilenko\ModuleLesson6\Model\ResourceModel\AskQuestion as AskQuestionResource;
+use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Model\ResourceModel\AbstractResource;
+use Magento\Framework\Registry;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class AskQuestion
@@ -25,34 +32,34 @@ use AKisilenko\ModuleLesson6\Model\ResourceModel\AskQuestion as AskQuestionResou
  * @method int|string getStoreId()
  * @method AskQuestion setStoreId(int $storeId)
  */
-class AskQuestion extends \Magento\Framework\Model\AbstractModel
+class AskQuestion extends AbstractModel
 {
     const STATUS_PENDING = 'pending';
     const STATUS_PROCESSED = 'processed';
 
-    /**
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    private $storeManager;
-    /**
-     * @param \Magento\Framework\Model\Context $context
-     * @param \Magento\Framework\Registry $registry
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
-     * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
-     * @param array $data
-     */
-    public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
-        \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
-        array $data = []
-    ) {
-        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
-        $this->storeManager = $storeManager;
-    }
+//    /**
+//     * @var StoreManagerInterface
+//     */
+//    private $storeManager;
+//    /**
+//     * @param Context $context
+//     * @param Registry $registry
+//     * @param StoreManagerInterface $storeManager
+//     * @param AbstractResource $resource
+//     * @param AbstractDb $resourceCollection
+//     * @param array $data
+//     */
+//    public function __construct(
+//        Context $context,
+//        Registry $registry,
+//        StoreManagerInterface $storeManager,
+//        AbstractResource $resource = null,
+//        AbstractDb $resourceCollection = null,
+//        array $data = []
+//    ) {
+//        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+//        $this->storeManager = $storeManager;
+//    }
     /**
      * @inheritdoc
      */
@@ -62,19 +69,19 @@ class AskQuestion extends \Magento\Framework\Model\AbstractModel
         $this->_init(AskQuestionResource::class);
     }
 
-    /**
-     * @return \Magento\Framework\Model\AbstractModel
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
-     */
-    public function beforeSave()
-    {
-        if (!$this->getStatus()) {
-            $this->setStatus(self::STATUS_PENDING);
-        }
-        if (!$this->getStoreId()) {
-            $this->setStoreId($this->storeManager->getStore()->getId());
-        }
-        return parent::beforeSave();
-    }
+//    /**
+//     * @return AbstractModel
+//     * @throws NoSuchEntityException
+//     */
+//    public function beforeSave()
+//    {
+//        if (!$this->getStatus()) {
+//            $this->setStatus(self::STATUS_PENDING);
+//        }
+//        if (!$this->getStoreId()) {
+//            $this->setStoreId($this->storeManager->getStore()->getId());
+//        }
+//        return parent::beforeSave();
+//    }
 
 }

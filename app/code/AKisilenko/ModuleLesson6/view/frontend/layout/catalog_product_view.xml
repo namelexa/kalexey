@@ -12,8 +12,7 @@
                 </arguments>
                 <block class="AKisilenko\ModuleLesson6\Block\Requests"
                        name="request.list"
-                       template="AKisilenko_ModuleLesson6::product/view/requests_list.phtml"
-                >
+                       template="AKisilenko_ModuleLesson6::product/view/requests_list.phtml">
                     <arguments>
                         <argument name="limit" xsi:type="number">5</argument>
                     </arguments>

@@ -2,7 +2,9 @@
 
 namespace AKisilenko\ModuleLesson6\Model\ResourceModel;
 
-class AskQuestion extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
+class AskQuestion extends AbstractDb
 {
     protected function _construct()
     {
