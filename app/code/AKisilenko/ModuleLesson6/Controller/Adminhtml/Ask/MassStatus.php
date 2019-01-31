@@ -5,11 +5,11 @@ namespace AKisilenko\ModuleLesson6\Controller\Adminhtml\Ask;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Ui\Component\MassAction\Filter;
 use AKisilenko\ModuleLesson6\Model\ResourceModel\AskQuestion\CollectionFactory;
 use Magento\Framework\Controller\ResultFactory;
-use AKisilenko\ModuleLesson6\Model\ResourceModel\AskQuestion\Collection;
 
 /**
  * Class MassStatus
@@ -44,22 +44,19 @@ class MassStatus extends Action
     }
 
     /**
-     * @param Collection $collection
-     * @return Redirect
-     * @throws LocalizedException
+     * @return Redirect|ResponseInterface|ResultInterface
      */
     public function execute()
     {
         $statusValue = $this->getRequest()->getParam('status');
-        $selected = $this->getRequest()->getPostValue('selected'); /** var $selected receive needed id's from listing*/
-//        $collection = $this->filter->getCollection($this->collectionFactory->create());
+        $selected = $this->getRequest()->getPostValue('selected');
 
-        $collection = $this->collectionFactory->create();
+        $collection = $this->collectionFactory->create()->addFieldToFilter('ask_id', $selected);
 
-            foreach ($collection as $item) {
-                $item->setStatus($statusValue);
-                $item->save();
-            }
+        foreach ($collection as $item) {
+            $item->setStatus($statusValue);
+            $item->save();
+        }
 
         $this->messageManager->addSuccess(__('A total of %1 record(s) have been modified.', $collection->getSize()));
 
@@ -67,6 +64,4 @@ class MassStatus extends Action
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         return $resultRedirect->setPath('*/*/');
     }
-
-
 }
