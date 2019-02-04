@@ -2,32 +2,39 @@
 namespace AKisilenko\ModuleLesson6\Controller\Submit;
 
 use AKisilenko\ModuleLesson6\Model\AskQuestion;
+use AKisilenko\ModuleLesson6\Model\AskQuestionFactory;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Exception\LocalizedException;
 
-class Index extends \Magento\Framework\App\Action\Action
+class Index extends Action
 {
     const STATUS_ERROR = 'Error';
     const STATUS_SUCCESS = 'Success';
     /**
-     * @var \Magento\Framework\Data\Form\FormKey\Validator
+     * @var Validator
      */
     private $formKeyValidator;
     /**
-     * @var \AKisilenko\ModuleLesson6\Model\AskQuestionFactory
+     * @var AskQuestionFactory
      */
     private $askQuestionFactory;
 
     /**
      * Index constructor.
-     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
-     * @param \AKisilenko\ModuleLesson6\Model\AskQuestionFactory $askQuestionFactory
-     * @param \Magento\Framework\App\Action\Context $context
+     * @param Validator $formKeyValidator
+     * @param AskQuestionFactory $askQuestionFactory
+     * @param Context $context
      */
     public function __construct(
-        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
-        \AKisilenko\ModuleLesson6\Model\AskQuestionFactory $askQuestionFactory,
-        \Magento\Framework\App\Action\Context $context
+        Validator $formKeyValidator,
+        AskQuestionFactory $askQuestionFactory,
+        Context $context
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
@@ -35,7 +42,8 @@ class Index extends \Magento\Framework\App\Action\Action
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Json|ResultInterface
+     * @throws \Exception
      */
     public function execute()
     {
@@ -48,10 +56,12 @@ class Index extends \Magento\Framework\App\Action\Action
                 throw new LocalizedException(__('This request is not valid and can not be processed.'));
             }
             $askQuestion = $this->askQuestionFactory->create();
-            $askQuestion->setName($request->getParam('name'))
+            $askQuestion
+                ->setName($request->getParam('name'))
                 ->setEmail($request->getParam('email'))
                 ->setTelephone($request->getParam('telephone'))
-                ->setComment($request->getParam('comment'));
+                ->setComment($request->getParam('comment'))
+                ->setStoreId($request->getParam('store'));
             $askQuestion->save();
             if (!$request->getParam('time_cookie')) {
                 $data = [
@@ -71,7 +81,7 @@ class Index extends \Magento\Framework\App\Action\Action
             ];
         }
         /**
-         * @var \Magento\Framework\Controller\Result\Json $controllerResult
+         * @var Json $controllerResult
          */
         $controllerResult = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         return $controllerResult->setData($data);

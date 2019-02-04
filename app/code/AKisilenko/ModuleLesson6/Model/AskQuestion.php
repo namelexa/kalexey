@@ -21,7 +21,7 @@ use Magento\Store\Model\StoreManagerInterface;
  * @method string getEmail()
  * @method AskQuestion setEmail(string $email)
  * @method string getTelephone()
- * @method AskQuestion setTelephone(string $phone)
+ * @method AskQuestion setTelephone(string $phone)w
  * @method string getComment()
  * @method AskQuestion setComment(string $question)
  * @method string getRequest()
@@ -37,29 +37,29 @@ class AskQuestion extends AbstractModel
     const STATUS_PENDING = 'pending';
     const STATUS_PROCESSED = 'processed';
 
-//    /**
-//     * @var StoreManagerInterface
-//     */
-//    private $storeManager;
-//    /**
-//     * @param Context $context
-//     * @param Registry $registry
-//     * @param StoreManagerInterface $storeManager
-//     * @param AbstractResource $resource
-//     * @param AbstractDb $resourceCollection
-//     * @param array $data
-//     */
-//    public function __construct(
-//        Context $context,
-//        Registry $registry,
-//        StoreManagerInterface $storeManager,
-//        AbstractResource $resource = null,
-//        AbstractDb $resourceCollection = null,
-//        array $data = []
-//    ) {
-//        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
-//        $this->storeManager = $storeManager;
-//    }
+    /**
+     * @var StoreManagerInterface
+     */
+    private $storeManager;
+    /**
+     * @param Context $context
+     * @param Registry $registry
+     * @param StoreManagerInterface $storeManager
+     * @param AbstractResource $resource
+     * @param AbstractDb $resourceCollection
+     * @param array $data
+     */
+    public function __construct(
+        Context $context,
+        Registry $registry,
+        StoreManagerInterface $storeManager,
+        AbstractResource $resource = null,
+        AbstractDb $resourceCollection = null,
+        array $data = []
+    ) {
+        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+        $this->storeManager = $storeManager;
+    }
     /**
      * @inheritdoc
      */
@@ -69,19 +69,19 @@ class AskQuestion extends AbstractModel
         $this->_init(AskQuestionResource::class);
     }
 
-//    /**
-//     * @return AbstractModel
-//     * @throws NoSuchEntityException
-//     */
-//    public function beforeSave()
-//    {
-//        if (!$this->getStatus()) {
-//            $this->setStatus(self::STATUS_PENDING);
-//        }
-//        if (!$this->getStoreId()) {
-//            $this->setStoreId($this->storeManager->getStore()->getId());
-//        }
-//        return parent::beforeSave();
-//    }
+    /**
+     * @return AbstractModel
+     * @throws NoSuchEntityException
+     */
+    public function beforeSave()
+    {
+        if (!$this->getStatus()) {
+            $this->setStatus(self::STATUS_PENDING);
+        }
+        if (!$this->getStoreId()) {
+            $this->setStoreId($this->storeManager->getStore()->getId());
+        }
+        return parent::beforeSave();
+    }
 
 }
