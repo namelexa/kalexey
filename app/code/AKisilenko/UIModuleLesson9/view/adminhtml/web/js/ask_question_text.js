@@ -1,15 +1,18 @@
-define(
-    [
-        'jquery',
-        'uiComponent'
+define([
+    'uiComponent',
+    'ko'
     ],
-    function (component) {
+    function ( Component, ko) {
         'use strict';
 
-        return component.extend({
-            justText: 'Text in the ask question page',
-            defaults: {
-                template: 'AKisilenko_UIModuleLesson9/text_template'
+        return Component.extend({
+
+            question: ko.observable(0),
+
+
+            initialize: function (config) {
+                this._super();
+                this.question = config.question;
             }
         });
     }

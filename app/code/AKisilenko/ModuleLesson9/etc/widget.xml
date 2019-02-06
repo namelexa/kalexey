@@ -37,9 +37,7 @@
                     <option name="red" value="red">
                         <label>Red</label>
                     </option>
-                    <option name="green"
-                            value="green"
-                            selected="true">
+                    <option name="green" value="green" selected="true">
                         <label translate="true">Green</label>
                     </option>
                 </options>
@@ -55,7 +53,6 @@
             <container name="main">
                 <template name="grid-main" value="grid-main" />
             </container>
-
         </containers>
     </widget>
 </widgets>
