@@ -60,9 +60,9 @@ class ProductQuantityUpdate extends Command
         $product = $this->productRepository->getById($productId);
         $stockItem = $this->_stockRegistry->getStockItem($product->getId());
         $stockItem->setData('is_in_stock', 1);
-        $stockItem->setData('quantity', $stockData);
+        $stockItem->setData('qty', $stockData);
         $stockItem->setData('manage_stock', 1);
-        $stockItem->setData('notify_quantity', 1);
+        $stockItem->setData('use_config_notify_stock_qty', 1);
         $stockItem->save();
         $this->_stockRegistry->updateStockItemBySku($product->getSku(), $stockItem);
     }
@@ -83,7 +83,7 @@ class ProductQuantityUpdate extends Command
                     'Product Id'
                 ),
                 new InputArgument(
-                    'quantity',
+                    'qty',
                     InputArgument::OPTIONAL,
                     'Product Qty'
                 )
@@ -108,8 +108,8 @@ class ProductQuantityUpdate extends Command
             $output->writeln('<info>Please input product Id for update!<info>');
             return;
         }
-        if ($input->getArgument('quantity')) {
-            $quantity = $input->getArgument('quantity');
+        if ($input->getArgument('qty')) {
+            $quantity = $input->getArgument('qty');
         } else {
             $output->writeln('<info>Please input product qty for update!<info>');
             return;
