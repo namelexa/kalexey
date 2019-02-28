@@ -6,6 +6,14 @@
                 <resource id="Magento_Backend::content">
                         <resource id="AKisilenko_ModuleLesson6::ask_question" title="Ask Question" translate="title" sortOrder="50" />
                 </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="AKisilenko_ModuleLesson6::ask_question_settings" title="Ask Question" translate="title" sortOrder="50" />
+                        <resource id="Magento_Config::config">
+                            <resource id="AKisilenko_ModuleLesson6::ask_question_options" title="Ask Question Settings"/>
+                        </resource>
+                    </resource>
+                </resource>
             </resource>
         </resources>
     </acl>
