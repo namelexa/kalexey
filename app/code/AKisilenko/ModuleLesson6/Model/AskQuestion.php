@@ -21,7 +21,7 @@ use Magento\Store\Model\StoreManagerInterface;
  * @method string getEmail()
  * @method AskQuestion setEmail(string $email)
  * @method string getTelephone()
- * @method AskQuestion setTelephone(string $phone)
+ * @method AskQuestion setTelephone(string $phone)w
  * @method string getComment()
  * @method AskQuestion setComment(string $question)
  * @method string getRequest()

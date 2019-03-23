@@ -21,6 +21,15 @@ class Collection extends AbstractCollection
     private $storeManager;
 
     /**
+     * @var string
+     */
+    protected $_eventPrefix = 'akisilenko_askquestion_collection';
+    /**
+     * @var string
+     */
+    protected $_eventObject = 'askquestion_collection';
+
+    /**
      * Collection constructor.
      * @param EntityFactoryInterface $entityFactory
      * @param LoggerInterface $logger
@@ -56,7 +65,7 @@ class Collection extends AbstractCollection
      * @return Collection
      * @throws NoSuchEntityException
      */
-    public function addStoreFilter(int $storeId = 0): self
+    public function addStoreFilter(int $storeId = 0)
     {
         if (!$storeId) {
             $storeId = (int) $this->storeManager->getStore()->getId();

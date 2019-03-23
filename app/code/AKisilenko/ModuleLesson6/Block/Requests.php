@@ -11,7 +11,7 @@ use Magento\Framework\View\Element\Template\Context;
 class Requests extends Template
 {
     /**
-     * @var AKisilenko\ModuleLesson6\Model\ResourceModel\AskQuestion\CollectionFactory
+     * @var CollectionFactory
      */
     private $collectionFactory;
 
@@ -38,7 +38,8 @@ class Requests extends Template
     {
         /** @var Collection $collection */
         $collection = $this->collectionFactory->create();
-        $collection->addStoreFilter()
+        $collection
+            ->addStoreFilter()
             ->getSelect()
             ->orderRand();
         if ($limit = $this->getData('limit')) {
