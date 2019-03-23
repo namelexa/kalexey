@@ -1,8 +1,12 @@
 <?php
 namespace AKisilenko\ModuleLesson6\Helper;
 
+use Magento\Framework\App\Area;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Exception\MailException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Framework\Translate\Inline\StateInterface;
@@ -27,6 +31,7 @@ class Mail extends AbstractHelper
      * @var ScopeConfigInterface
      */
     protected $scopeConfig;
+
     private $userFactory;
     /**
      * Mail constructor.
@@ -57,13 +62,13 @@ class Mail extends AbstractHelper
      * @param $emailFrom
      * @param string $customerName
      * @param $message
-     * @throws \Magento\Framework\Exception\MailException
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws MailException
+     * @throws NoSuchEntityException
      */
     public function sendMail($emailFrom, $customerName = '', $message)
     {
         $templateOptions = [
-            'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
+            'area' => Area::AREA_FRONTEND,
             'store' => $this->storeManager->getStore()->getId()
         ];
         $templateVars = [
@@ -109,7 +114,7 @@ class Mail extends AbstractHelper
     {
         $transEmailSaller = $this->scopeConfig->getValue(
             'trans_email/ident_sales/email',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            ScopeInterface::SCOPE_STORE
         );
         if ($transEmailSaller) {
             return $transEmailSaller;
@@ -120,5 +125,16 @@ class Mail extends AbstractHelper
             return $user->getEmail();
         }
         return '';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEnableFlagEmailing()
+    {
+        return $this->scopeConfig->getValue(
+            'ask_question_options/email_status/choose_email_status',
+            ScopeInterface::SCOPE_STORES
+        );
     }
 }
