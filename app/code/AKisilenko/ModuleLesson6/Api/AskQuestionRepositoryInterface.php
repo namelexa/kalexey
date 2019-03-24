@@ -1,6 +1,7 @@
 <?php
 namespace AKisilenko\ModuleLesson6\Api;
 
+use AKisilenko\ModuleLesson6\Api\Data\AskQuestionInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 
 /**
@@ -13,7 +14,7 @@ interface AskQuestionRepositoryInterface
      * @param Data\AskQuestionInterface $askQuestion
      * @return mixed
      */
-    public function save(Data\AskQuestionInterface $askQuestion);
+    public function save(AskQuestionInterface $askQuestion);
 
     /**
      * @param $askQuestionId
@@ -31,7 +32,7 @@ interface AskQuestionRepositoryInterface
      * @param Data\AskQuestionInterface $askQuestion
      * @return mixed
      */
-    public function delete(Data\AskQuestionInterface $askQuestion);
+    public function delete(AskQuestionInterface $askQuestion);
 
     /**
      * @param $askQuestionId
