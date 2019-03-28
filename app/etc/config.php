@@ -1,6 +1,7 @@
 <?php
 return [
     'modules' => [
+        'AKisilenko_CustomerOrder' => 1,
         'AKisilenko_Kmodule' => 1,
         'AKisilenko_ModuleLesson11' => 1,
         'AKisilenko_ModuleLesson4' => 1,
