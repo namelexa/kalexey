@@ -32,6 +32,8 @@
                 </field>
             </group>
 
+
+
             <group id="test" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Test</label>
                 <field id="specificcountry" translate="label" type="multiselect" sortOrder="21" showInDefault="1"
@@ -55,6 +57,16 @@
                     <frontend_model>AKisilenko\ModuleLesson6\Block\Adminhtml\Form\Field\DynamicItems</frontend_model>
                     <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
                 </field>
+            </group>
+
+            <group id="email_status" translate="label" type="text" sortOrder="26" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Status</label>
+
+                <field id="choose_email_status" translate="label" type="select" sortOrder="27" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Email Status</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+
             </group>
 
         </section>
