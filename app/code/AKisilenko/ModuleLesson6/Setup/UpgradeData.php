@@ -4,6 +4,7 @@ namespace AKisilenko\ModuleLesson6\Setup;
 
 use AKisilenko\ModuleLesson6\Model\AskQuestionFactory;
 use Exception;
+use Magento\Eav\Model\Config as EavConfig;
 use Magento\Catalog\Model\Product;
 use Magento\Customer\Model\Attribute;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
@@ -40,6 +41,9 @@ class UpgradeData implements UpgradeDataInterface
     /**
      * @var Attribute
      */
+
+    private $eavConfig;
+
     private $customerAttribute;
 
     /**
@@ -53,12 +57,14 @@ class UpgradeData implements UpgradeDataInterface
         AskQuestionFactory $askQuestionFactory,
         TransactionFactory $transactionFactory,
         EavSetupFactory $eavSetupFactory,
+        \Magento\Eav\Model\Config $eavConfig,
         Attribute $customerAttribute
     ) {
         $this->askQuestionFactory = $askQuestionFactory;
         $this->transactionFactory = $transactionFactory;
         $this->eavSetupFactory = $eavSetupFactory;
         $this->customerAttribute = $customerAttribute;
+        $this->eavConfig = $eavConfig;
     }
 
     /**
@@ -70,7 +76,7 @@ class UpgradeData implements UpgradeDataInterface
     {
         $setup->startSetup();
 
-        if (version_compare($context->getVersion(), '1.1.0', '<')) {
+        if (version_compare($context->getVersion(), '1.1.1', '<')) {
             $statuses = [AskQuestion::STATUS_PENDING, AskQuestion::STATUS_PROCESSED];
             /** @var Transaction $transaction */
             $transaction = $this->transactionFactory->create();
@@ -143,6 +149,32 @@ class UpgradeData implements UpgradeDataInterface
                 'attribute_set_id' => 1,
                 'attribute_group_id' => 1,
                 'used_in_forms' => ['adminhtml_customer', 'customer_account_edit'],
+            ])->save();
+
+            /** @var EavSetup $eavSetup */
+            $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+            $eavSetup->addAttribute(
+                'customer_address',
+                'corpus',
+                [
+                    'label' => 'Corpus',
+                    'input' => 'text',
+                    'type' => 'varchar',
+                    'source' => '',
+                    'required' => false,
+                    'position' => 400,
+                    'visible' => true,
+                    'system' => false,
+                    'is_used_in_grid' => false,
+                    'is_visible_in_grid' => false,
+                    'is_filterable_in_grid' => false,
+                    'is_searchable_in_grid' => false,
+                    'backend' => ''
+                ]
+            );
+            $attribute = $this->customerAttribute->loadByCode('customer_address', 'corpus');
+            $attribute->addData([
+                'used_in_forms' => ['adminhtml_customer_address', 'customer_account_edit', 'customer_register_address']
             ])->save();
         }
 
