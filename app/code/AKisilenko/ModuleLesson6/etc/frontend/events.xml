@@ -6,4 +6,8 @@
                   instance="AKisilenko\ModuleLesson6\Observer\Catalog\Block\Product\View"
         />
     </event>
+    <event name="layout_generate_blocks_after">
+        <observer name="ask_question_handler"
+                  instance="AKisilenko\ModuleLesson6\Observer\LayoutGenerateBlocksAfter" />
+    </event>
 </config>
