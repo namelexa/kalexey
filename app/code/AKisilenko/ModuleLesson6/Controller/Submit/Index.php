@@ -82,8 +82,9 @@ class Index extends Action
                 ->setEmail($request->getParam('email'))
                 ->setTelephone($request->getParam('telephone'))
                 ->setComment($request->getParam('comment'))
-                ->setStoreId($request->getParam('store'));
-            $this->requestSampleRepository->save($askQuestion);
+                ->setStoreId($request->getParam('store'))
+                ->setCustomerId($request->getParam('customer_id'));
+            $this->askQuestionRepository->save($askQuestion);
 
             /**
              * Send Email

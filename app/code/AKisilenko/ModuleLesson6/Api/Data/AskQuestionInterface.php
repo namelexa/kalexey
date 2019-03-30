@@ -98,4 +98,19 @@ interface AskQuestionInterface
      * @return mixed
      */
     public function setStoreId($storeId);
+
+    /**
+     * Get customer ID
+     *
+     * @return int
+     */
+    public function getCustomerId(): int;
+
+    /**
+     * Set customer ID
+     *
+     * @param int $customerId
+     * @return mixed
+     */
+    public function setCustomerId($customerId);
 }

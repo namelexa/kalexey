@@ -139,6 +139,22 @@ class AskQuestion extends AbstractModel implements AskQuestionInterface
     }
 
     /**
+     * @return int
+     */
+    public function getCustomerId():int
+    {
+        return (int) $this->getData('customer_id');
+    }
+
+    /**
+     * @param int $customerId
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->setData('customer_id', $customerId);
+    }
+
+    /**
      * @var StoreManagerInterface
      */
     private $storeManager;
