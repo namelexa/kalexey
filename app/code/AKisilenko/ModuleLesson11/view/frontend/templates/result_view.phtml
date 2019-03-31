@@ -4,36 +4,29 @@
  */
 ?>
     <div class="green" style="color: green;">
-        <h2>Show info from Di.xml</h2>
+        <h2><?= $block->escapeHtmlAttr(__('Show info from Di.xml')) ?></h2>
         <?php
         var_dump($block->getInjectObject());
         ?>
     </div>
 
     <div class="red" style="color: indianred;">
-        <h2>File list </h2>
-        <?php
-        foreach ($block->getFileListObject()->makeFileList() as $item) {
-            echo "$item" . ' ' . date('F d Y H:i:s.', filemtime($item)) . "\n";
-        }
-        ?>
+        <h2><?= $block->escapeHtmlAttr(__('File list')) ?></h2>
+        <?php foreach ($block->getFileListObject()->makeFileList() as $item): ?>
+            <li> <?php echo $item; ?> <?php echo date('F d Y H:i:s.', filemtime($item)); ?></li>
+        <?php  endforeach; ?>
     </div>
 
     <div class="blue" style="color: dodgerblue;">
-        <h2>Reflection Example</h2>
-        <h3>Constants</h3>
-        <?php
+        <h2><?= $block->escapeHtmlAttr(__('Reflection Example')) ?></h2>
 
-        foreach ($block->getReflectionExampleObject()->getConstants() as $item) {
-            echo $item . "<br/>";
-        }
-        ?>
+        <h3><?= $block->escapeHtmlAttr(__('Constants')) ?></h3>
+        <?php foreach ($block->getReflectionExampleObject()->getConstants() as $item): ?>
+            <p> <?php echo $item; ?></p>
+        <?php  endforeach; ?>
 
-        <h3>Constants</h3>
-        <?php
-
-        foreach ($block->getReflectionExampleObject()->getMethods() as $item) {
-            echo $item . "<br/>";
-        }
-        ?>
+        <h3><?= $block->escapeHtmlAttr(__('Methods')) ?></h3>
+        <?php foreach ($block->getReflectionExampleObject()->getMethods() as $item): ?>
+            <p> <?php echo $item; ?></p>
+        <?php  endforeach; ?>
     </div>

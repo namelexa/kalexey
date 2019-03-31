@@ -6,22 +6,31 @@ namespace AKisilenko\ModuleLesson11\Model;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Magento\Framework\Filesystem\DirectoryList ;
 
 /**
  * Class MyFiles
  * @package file_list
  */
-class FileList
+class FileList extends DirectoryList
 {
+    protected $directoryList;
+
+    /**
+     * FileList constructor.
+     * @param DirectoryList $directoryList
+     */
+    public function __construct(
+        DirectoryList $directoryList
+    )
+    {
+        $this->directoryList = $directoryList;
+    }
+
     public function makeFileList()
     {
-        $path = realpath('/misc/apps/kalexey/app/code/');
+        $path = realpath($this->directoryList->getRoot() . '/app/code/');
         $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
         return $objects;
-//        foreach($objects as $name => $object){
-//            return "$name" . ' ' . date('F d Y H:i:s.', filemtime($name)) . "\n";
-//        }
     }
 }
-//$newFiles = new FileList();
-//$newFiles->makeFileList();

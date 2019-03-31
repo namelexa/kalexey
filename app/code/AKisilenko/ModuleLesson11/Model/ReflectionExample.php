@@ -4,35 +4,33 @@ declare(strict_types=1);
 
 namespace AKisilenko\ModuleLesson11\Model;
 
-use ReflectionClass;
-use ReflectionMethod;
-
+/**
+ * Class ReflectionExample
+ * @package AKisilenko\ModuleLesson11\Model
+ */
 class ReflectionExample
 {
-
     const PARENT1 = 'PARENT1';
     const PARENT2 = 'PARENT2';
+    const MY_CLASS = 'My class';
+
     /**
      * @return array
      * @throws \ReflectionException
      */
-    const MY_CLASS = 'My class';
-    public function getConstants():array
+    public function getConstants(): array
     {
         return (new \ReflectionClass(static::class))->getConstants();
     }
 
     /**
-     * @return \ReflectionMethod[]
+     * @return array
      * @throws \ReflectionException
      */
-    public function getMethods():array
+    public function getMethods(): array
     {
         $item = new  \ReflectionClass(__CLASS__);
         return $item->getMethods();
     }
 
 }
-
-
-
