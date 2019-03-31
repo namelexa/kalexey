@@ -14,14 +14,19 @@ use AKisilenko\ModuleLesson6\Helper\Config;
  */
 class Status
 {
+    const XML_PATH_ASK_QUESTION_CRON_IS_ENABLED = 'ask_question_options/cron/enable_cron';
+    const XML_PATH_ASK_QUESTION_CRON_FREQUENCY = 'ask_question_options/cron/frequency';
+
     /**
      * @var
      */
     protected $scopeConfig;
+
     /**
      * @var CollectionFactory
      */
     protected $askFactory;
+
     /**
      * @var LoggerInterface
      */
@@ -44,36 +49,32 @@ class Status
     }
 
     /**
-     * @param string $key
-     * @param string $section
      * @return mixed
      */
-    private function isEnabled($key = 'enable_cron', $section = 'cron')
+    private function getStatusOptions()
     {
         return $this->scopeConfig
             ->getValue(
-                "ask_question_options/$section/$key",
+                self::XML_PATH_ASK_QUESTION_CRON_IS_ENABLED,
                 ScopeInterface::SCOPE_STORE
             );
     }
 
     /**
-     * @param string $key
-     * @param string $section
      * @return mixed
      */
-    private function getDaysQuantity($key = 'frequency', $section = 'cron')
+    private function getDaysQuantity()
     {
         return $this->scopeConfig
             ->getValue(
-                "ask_question_options/$section/$key",
+                self::XML_PATH_ASK_QUESTION_CRON_FREQUENCY,
                 ScopeInterface::SCOPE_STORES
             );
     }
 
     public function execute()
     {
-        if ($this->isEnabled() == 1) {
+        if ($this->getStatusOptions() == 1) {
             $currentDate = date('Y-m-d h:i:s');
             $filterDateTime = strtotime('-' . $this->getDaysQuantity() . ' day', strtotime($currentDate));
             $filterDate = date('Y-m-d h:i:s', $filterDateTime);
