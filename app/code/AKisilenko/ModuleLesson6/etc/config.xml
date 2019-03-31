@@ -8,11 +8,13 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <ask_question>
-            <email_status>
-                <choose_email_status>1</choose_email_status>
-                <module_name>Email Status</module_name>
-            </email_status>
-        </ask_question>
+        <ask_question_options>
+            <cron>
+                <enable_cron>
+                    <enabled>1</enabled>
+                </enable_cron>
+                <frequency>3</frequency>
+            </cron>
+        </ask_question_options>
     </default>
 </config>
