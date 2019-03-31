@@ -51,7 +51,7 @@ class Status
     /**
      * @return mixed
      */
-    private function getStatusOptions()
+    private function isCronEnabled()
     {
         return $this->scopeConfig
             ->getValue(
@@ -74,7 +74,7 @@ class Status
 
     public function execute()
     {
-        if ($this->getStatusOptions() == 1) {
+        if ($this->isCronEnabled() == 1) {
             $currentDate = date('Y-m-d h:i:s');
             $filterDateTime = strtotime('-' . $this->getDaysQuantity() . ' day', strtotime($currentDate));
             $filterDate = date('Y-m-d h:i:s', $filterDateTime);
