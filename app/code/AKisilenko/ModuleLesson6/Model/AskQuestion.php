@@ -23,7 +23,7 @@ class AskQuestion extends AbstractModel implements AskQuestionInterface
 
     public function getId()
     {
-        return $this->getData('request_id');
+        return $this->getData('ask_id');
     }
 
     /**
@@ -31,7 +31,7 @@ class AskQuestion extends AbstractModel implements AskQuestionInterface
      */
     public function setId($id)
     {
-        return $this->setData('request_id', $id);
+        return $this->setData('ask_id', $id);
     }
 
     /**

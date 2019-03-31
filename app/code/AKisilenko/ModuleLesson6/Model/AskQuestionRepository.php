@@ -116,14 +116,16 @@ class AskQuestionRepository implements AskQuestionRepositoryInterface
     }
 
     /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
      * @param SearchCriteriaInterface $criteria
-     * @return mixed
+     * @return \AKisilenko\ModuleLesson6\Model\ResourceModel\AskQuestion\Collection
      */
     public function getList(SearchCriteriaInterface $criteria)
     {
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        $collection = $this->AskQuestionCollectionFactory->create();
+        $collection = $this->askQuestionCollectionFactory->create();
         foreach ($criteria->getFilterGroups() as $filterGroup) {
             foreach ($filterGroup->getFilters() as $filter) {
                 $condition = $filter->getConditionType() ?: 'eq';

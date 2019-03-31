@@ -1,7 +1,7 @@
 <?php
 class MagentoAPI
 {
-    protected $_magentoBaseUrl = 'https://kalexey.local/';
+    protected $_magentoBaseUrl = 'http://kalexey.local/';
     protected $_magentoApiController = 'index.php/rest/V1/';
     protected $_token;
     protected $_message;
@@ -108,10 +108,10 @@ class MagentoAPI
     }
 }
 $magento = new MagentoAPI('kalexey', 'kalexey2');
-$sampleRequest = $magento->getSampleRequest(1);
+$sampleRequest = $magento->getSampleRequest(21);
 var_dump($sampleRequest);
 unset($sampleRequest->created_at);
-$sampleRequest->product_name .= ' (CHANGED)';
+$sampleRequest->comment .= ' (CHANGED)';
 var_dump($magento->saveSampleRequest($sampleRequest));
 var_dump($magento->getSampleRequest(1));
 var_dump($magento->getAllSampleRequests());

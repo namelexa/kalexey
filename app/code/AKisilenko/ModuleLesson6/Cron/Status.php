@@ -36,10 +36,8 @@ class Status
     public function __construct(
         LoggerInterface $logger,
         ScopeConfigInterface $scopeConfig,
-//        Config $config,
         CollectionFactory $askQuestionsFactory
     ) {
-//        $this->dateQuantity = $config;
         $this->logger = $logger;
         $this->scopeConfig = $scopeConfig;
         $this->askFactory = $askQuestionsFactory;

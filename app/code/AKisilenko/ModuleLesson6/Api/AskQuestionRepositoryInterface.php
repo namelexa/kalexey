@@ -11,32 +11,38 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 interface AskQuestionRepositoryInterface
 {
     /**
-     * @param Data\AskQuestionInterface $askQuestion
-     * @return mixed
+     * @param \AKisilenko\ModuleLesson6\Api\Data\AskQuestionInterface $askQuestion
+     * @return \AKisilenko\ModuleLesson6\Api\Data\AskQuestionInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function save(AskQuestionInterface $askQuestion);
 
     /**
-     * @param $askQuestionId
-     * @return mixed
+     * @param int $askQuestionId
+     * @return \AKisilenko\ModuleLesson6\Api\Data\AskQuestionInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getById($askQuestionId);
 
     /**
      * @param SearchCriteriaInterface $searchCriteria
-     * @return mixed
+     * @return \AKisilenko\ModuleLesson6\Api\Data\AskQuestionSearchResultsInterface
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(SearchCriteriaInterface $searchCriteria);
 
     /**
-     * @param Data\AskQuestionInterface $askQuestion
-     * @return mixed
+     * @param \AKisilenko\ModuleLesson6\Api\Data\AskQuestionInterface $askQuestion
+     * @return bool true on success
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function delete(AskQuestionInterface $askQuestion);
 
     /**
-     * @param $askQuestionId
-     * @return mixed
+     * @param int $askQuestionId
+     * @return bool true on success
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function deleteById($askQuestionId);
 }
