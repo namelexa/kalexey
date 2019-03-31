@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2019 Mageside. All rights reserved.
+ * See MS-LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ask_question_options>
+            <cron>
+                <enable_cron>
+                    <enabled>1</enabled>
+                </enable_cron>
+                <frequency>3</frequency>
+            </cron>
+        </ask_question_options>
+    </default>
+</config>

@@ -1,0 +1,11 @@
+<?php /** @var \AKisilenko\ModuleLesson6\Block\Requests $block */
+$sampleRequests = $block->getSampleRequests();
+?>
+<?php if ($sampleRequests->count()): ?>
+    <ul>
+        <?php /** @var \AKisilenko\ModuleLesson6\Block\Requests $sampleRequest */
+        foreach ($sampleRequests as $sampleRequest): ?>
+            <li><?= __('Requested by %1', $sampleRequest->getName()) ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

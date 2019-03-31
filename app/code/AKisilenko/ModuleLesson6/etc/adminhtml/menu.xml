@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+<menu>
+    <add id="AKisilenko_ModuleLesson6::ask_question_menu"
+         title="Ask"
+         module="AKisilenko_ModuleLesson6"
+         sortOrder="51"
+         resource="AKisilenko_ModuleLesson6::ask_question_menu"/>
+    <add id="AKisilenko_ModuleLesson6::ask_question"
+         title="Ask question"
+         module="AKisilenko_ModuleLesson6"
+         sortOrder="10"
+         action="ask_question/ask/index"
+         resource="AKisilenko_ModuleLesson6::ask"
+         parent="AKisilenko_ModuleLesson6::ask_question_menu"/>
+</menu>
+</config>
