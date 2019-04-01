@@ -11,6 +11,7 @@ use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Exception\LocalizedException;
+use AKisilenko\ModuleLesson6\Helper\Mail;
 
 class Index extends Action
 {
@@ -24,21 +25,25 @@ class Index extends Action
      * @var AskQuestionFactory
      */
     private $askQuestionFactory;
+    private $mailHelper;
 
     /**
      * Index constructor.
      * @param Validator $formKeyValidator
      * @param AskQuestionFactory $askQuestionFactory
+     * @param Mail $mailHelper
      * @param Context $context
      */
     public function __construct(
         Validator $formKeyValidator,
         AskQuestionFactory $askQuestionFactory,
+        Mail $mailHelper,
         Context $context
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
         $this->askQuestionFactory = $askQuestionFactory;
+        $this->mailHelper = $mailHelper;
     }
 
     /**
@@ -63,6 +68,15 @@ class Index extends Action
                 ->setComment($request->getParam('comment'))
                 ->setStoreId($request->getParam('store'));
             $askQuestion->save();
+            /**
+             * Send Email
+             */
+            if ($request->getParam('email')) {
+                $email = $request->getParam('email');
+                $customerName = $request->getParam('name');
+                $message = $request->getParam('comment');
+                $this->mailHelper->sendMail($email, $customerName, $message);
+            }
             if (!$request->getParam('time_cookie')) {
                 $data = [
                     'status' => self::STATUS_ERROR,
