@@ -1,6 +1,8 @@
 <?php
 namespace AKisilenko\ModuleLesson6\Controller\Submit;
 
+use AKisilenko\ModuleLesson6\Api\Data\AskQuestionInterface;
+use AKisilenko\ModuleLesson6\Api\AskQuestionRepositoryInterface;
 use AKisilenko\ModuleLesson6\Model\AskQuestion;
 use AKisilenko\ModuleLesson6\Model\AskQuestionFactory;
 use Magento\Framework\App\Action\Action;
@@ -17,33 +19,47 @@ class Index extends Action
 {
     const STATUS_ERROR = 'Error';
     const STATUS_SUCCESS = 'Success';
+
     /**
      * @var Validator
      */
     private $formKeyValidator;
+
     /**
      * @var AskQuestionFactory
      */
     private $askQuestionFactory;
+
+    /**
+     * @var Mail
+     */
     private $mailHelper;
+
+    /**
+     * @var
+     */
+    private $askQuestionRepository;
 
     /**
      * Index constructor.
      * @param Validator $formKeyValidator
      * @param AskQuestionFactory $askQuestionFactory
      * @param Mail $mailHelper
+     * @param AskQuestionRepositoryInterface $askQuestionRepository
      * @param Context $context
      */
     public function __construct(
         Validator $formKeyValidator,
         AskQuestionFactory $askQuestionFactory,
         Mail $mailHelper,
+        AskQuestionRepositoryInterface $askQuestionRepository,
         Context $context
     ) {
         parent::__construct($context);
         $this->formKeyValidator = $formKeyValidator;
         $this->askQuestionFactory = $askQuestionFactory;
         $this->mailHelper = $mailHelper;
+        $this->askQuestionRepository = $askQuestionRepository;
     }
 
     /**
@@ -67,7 +83,8 @@ class Index extends Action
                 ->setTelephone($request->getParam('telephone'))
                 ->setComment($request->getParam('comment'))
                 ->setStoreId($request->getParam('store'));
-            $askQuestion->save();
+            $this->askQuestionRepository->save($askQuestion);
+
             /**
              * Send Email
              */
