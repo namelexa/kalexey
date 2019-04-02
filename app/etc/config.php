@@ -1,6 +1,7 @@
 <?php
 return [
     'modules' => [
+        'AKisilenko_CustomerOrder' => 1,
         'AKisilenko_Kmodule' => 1,
         'AKisilenko_ModuleLesson11' => 1,
         'AKisilenko_ModuleLesson4' => 1,
@@ -12,6 +13,7 @@ return [
         'Magento_Directory' => 1,
         'Magento_Eav' => 1,
         'Magento_Theme' => 1,
+        'Geekhub_CustomerOrder' => 1,
         'Magento_Cms' => 1,
         'Magento_Customer' => 1,
         'Magento_AdminNotification' => 1,
