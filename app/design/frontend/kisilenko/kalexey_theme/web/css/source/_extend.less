@@ -1,0 +1,17 @@
+& when (@media-common = true) {
+    .lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/Gotham Regular',
+        @font-weight: normal,
+        @font-style: normal
+    );
+}
+    @font-family-name__base: 'Gotham Regular';
+    @font-family__base: @font-family-name__base;
+
+    @mycolor-pink:#9400D3;
+    @bdcolor-dark-blue:#000080;
+
+    @button-primary__background: @mycolor-pink;
+    @button-primary__border: 1px solid @bdcolor-dark-blue;
+    @button-primary__color: @color-white;

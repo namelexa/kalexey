@@ -1,0 +1,39 @@
+<?php
+/**
+ * @var \AKisilenko\ModuleLesson11\Block\View $block;
+ */
+?>
+    <div class="green" style="color: green;">
+        <h2>Show info from Di.xml</h2>
+        <?php
+        var_dump($block->getInjectObject());
+        ?>
+    </div>
+
+    <div class="red" style="color: indianred;">
+        <h2>File list </h2>
+        <?php
+        foreach ($block->getFileListObject()->makeFileList() as $item) {
+            echo "$item" . ' ' . date('F d Y H:i:s.', filemtime($item)) . "\n";
+        }
+        ?>
+    </div>
+
+    <div class="blue" style="color: dodgerblue;">
+        <h2>Reflection Example</h2>
+        <h3>Constants</h3>
+        <?php
+
+        foreach ($block->getReflectionExampleObject()->getConstants() as $item) {
+            echo $item . "<br/>";
+        }
+        ?>
+
+        <h3>Constants</h3>
+        <?php
+
+        foreach ($block->getReflectionExampleObject()->getMethods() as $item) {
+            echo $item . "<br/>";
+        }
+        ?>
+    </div>
