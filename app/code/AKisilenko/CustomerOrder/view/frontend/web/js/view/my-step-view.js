@@ -12,15 +12,10 @@ define(
         stepNavigator
     ) {
         'use strict';
-        /**
-         *
-         * mystep - is the name of the component's .html template,
-         * <Vendor>_<Module>  - is the name of the your module directory.
-         *
-         */
+
         return Component.extend({
             defaults: {
-                template: '<Vendor>_<Module>/mystep'
+                template: 'AKisilenko_CustomerOrder/mystep'
             },
 
             //add here your logic to display step,
